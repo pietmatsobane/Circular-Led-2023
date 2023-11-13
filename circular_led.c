@@ -15,6 +15,10 @@ void One_Led_Clockwise(void){
     Speed.ByteSpeed[0] = uart_read();   //LSB Byte
     Speed.ByteSpeed[1] = uart_read();   //MSB Byte
     /********************************************************/
+    sprintf(print_buffer, "%x ",Count.AnimCount);
+    uart_write(print_buffer);
+    sprintf(print_buffer, "%x ",Speed.AnimSpeed);
+    uart_write(print_buffer);
     //uart_write(Animation1);
     for(uint16_t repeat = 0; repeat < Count.AnimCount; repeat++){
         DATA = HIGH;
@@ -30,6 +34,7 @@ void One_Led_Clockwise(void){
         }
         Clear_Data();
     }
+    return;
 }
 
 void Draw_Circle(void){
